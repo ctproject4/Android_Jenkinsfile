@@ -11,7 +11,7 @@ agent any
         stage('Build'){
             steps{
                 sh 'rm -rf /var/lib/jenkins/workspace/kotlin_android_pipeline/app/build/test-results/testReleaseUnitTest/TEST-com.yodle.android.kotlindemo.service.GitHubApiServiceTest.xml'
-                sh './gradlew build'
+                sh './gradlew clean test build sonarqube -Dsonar.host.url=http://10.30.10.127:9000'
             }
         }
         stage('Reports'){
